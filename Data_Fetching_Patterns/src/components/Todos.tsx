@@ -1,11 +1,12 @@
 // import axios from "axios";
 import { useFetchData } from "../utils";
+import Loading from "./Loading";
 
 // import { get } from "../utils";
 
 type Todo = {
     id : number;
-    tittle : string;
+    title : string;
     description : string;
     completed : boolean;
 }
@@ -20,30 +21,33 @@ const TodosComponent = () => {
     console.log(data);
     const todos = data?.todos;
 
-    if (loading) {
-        console.log("in the loading ");
-        return (
-            <>
-                <h1>Loading...</h1> 
-            </>
-        )
-    }
+    // if (loading) {
+    //     console.log("in the loading ");
+    //     return (
+    //         <>
+    //             <Loading /> 
+    //         </>
+    //     )
+    // }
     
 
     return (
         <>
-            <div>
+            <div className="mt-10">
                 <h1>Todos</h1>
-                <ul>
-                    {todos?.map((todo, ind) => (
-                        <li key={ind}>
-                            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                                {todo.tittle}
-                                {todo.description}
-                            </span>
-                        </li>
-                        ))}
-                </ul>
+                {
+                    loading ? <Loading /> : 
+                    <ul className="mt-2">
+                        {todos?.map((todo, ind) => (
+                            <li key={ind} className="mt-2">
+                                <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                                    {todo.title}<br></br>
+                                    {todo.description}
+                                </span>
+                            </li>
+                            ))}
+                    </ul>
+                }
             </div>
         </>
     );

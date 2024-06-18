@@ -1,4 +1,5 @@
 import { useFetchData } from "../utils";
+import Loading from './Loading';
 
 type Notification = {
     network : number;
@@ -11,26 +12,28 @@ type Notification = {
 const Notification = () => {
     const {data, loading} = useFetchData<Notification | undefined>('https://sum-server.100xdevs.com/notifications');
 
-    if(loading) {
-        return (
-            <>
-                <h1>Loading ....</h1>
-            </>
-        )
-    }
+    // if(loading) {
+    //     return (
+    //         <>
+    //             <Loading />
+    //         </>
+    //     )
+    // }
 
     return (
         <>
-        <h1>Notification</h1>
-        {
-            loading ? <h1>Loading ....</h1> : 
-                <ul>
-                    <li>jobs : { data?.jobs}</li>
-                    <li> messaging : { data?.messaging}</li>
-                    <li>network : { data?.network}</li>
-                    <li>notifications : { data?.notifications}</li>
-                </ul>
-        }   
+        <div className="mt-10">
+            <h1>Notification</h1>
+            {
+                loading ? <Loading /> : 
+                    <ul>
+                        <li>jobs : { data?.jobs}</li>
+                        <li> messaging : { data?.messaging}</li>
+                        <li>network : { data?.network}</li>
+                        <li>notifications : { data?.notifications}</li>
+                    </ul>
+            } 
+        </div>  
         </>
     )
 }
