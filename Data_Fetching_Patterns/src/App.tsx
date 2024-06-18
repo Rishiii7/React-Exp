@@ -1,11 +1,11 @@
 import './App.css'
-import TodosComponent from './components/Todos'
+import Profile from './pages/Profile'
 
 function App() {
 
   return (
     <>
-      <TodosComponent />
+      <Profile />
     </>
   )
 }
