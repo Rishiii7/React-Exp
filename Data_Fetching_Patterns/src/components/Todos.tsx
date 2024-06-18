@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { get } from "../utils";
+// import { get } from "../utils";
 
 type Todo = {
     id : number;
@@ -13,8 +13,8 @@ type Todos = {
     todos : Todo[];
 }
 
-const useFetchTodos = () => {
-    const [data, setData] = useState<Todos | undefined>();
+const useFetchTodos  = <T,>(url : string) => {
+    const [data, setData] = useState<T | undefined>();
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect( () => {
@@ -24,9 +24,10 @@ const useFetchTodos = () => {
         
         const fetchTodo = async () => {
             try {
-                const response = await get<Todos>('todos')
-                console.log(response);
-                setData(response);
+                const response = await axios.get<T>(url)
+                console.log(response.data);
+                console.log("In the fetch")
+                setData(response.data);
             } catch (err) {
                 console.error(err);
             } finally {
@@ -53,7 +54,8 @@ const useFetchTodos = () => {
 
 const TodosComponent = () => {
 
-    const {data, loading} = useFetchTodos();
+    const {data , loading} = useFetchTodos<Todos>('https://sum-server.100xdevs.com/todos');
+    console.log(data);
     const todos = data?.todos;
 
     if (loading) {
