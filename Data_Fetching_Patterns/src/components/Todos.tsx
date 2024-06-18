@@ -1,35 +1,13 @@
 // import axios from "axios";
+import { Todos, Todo } from "../types";
 import { useFetchData } from "../utils";
 import Loading from "./Loading";
 
-// import { get } from "../utils";
+const TodosComponent = ({todos, loading} : {todos:Todo[], loading:boolean}) => {
 
-type Todo = {
-    id : number;
-    title : string;
-    description : string;
-    completed : boolean;
-}
-
-type Todos = {
-    todos : Todo[];
-}
-
-const TodosComponent = () => {
-
-    const {data , loading} = useFetchData<Todos | undefined>('https://sum-server.100xdevs.com/todos');
-    console.log(data);
-    const todos = data?.todos;
-
-    // if (loading) {
-    //     console.log("in the loading ");
-    //     return (
-    //         <>
-    //             <Loading /> 
-    //         </>
-    //     )
-    // }
-    
+    // const {data , loading} = useFetchData<Todos | undefined>('https://sum-server.100xdevs.com/todos');
+    // console.log(data);
+    // const todos = data?.todos;
 
     return (
         <>
