@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useState } from "react"
 
 const PasswordChecker = (password : string) : number => {
     let strength = 0;
@@ -34,21 +34,25 @@ type PasswordChecker = {
 }
 
 export const PasswordComponent = () => {
-    const [password, setPassword] = useState<string>('');
-    const [strength, setStrength] = useState<number>(0);
+    // const [password, setPassword] = useState<string>('');
+    // const [strength, setStrength] = useState<number>(0);
+    const [passwordChecker, setPasswordChecker] = useState<PasswordChecker>({
+        password : '',
+        strength : 0
+    });
 
     const onchangePasswordHandler = useCallback( (e : React.FormEvent<HTMLInputElement>) => {
-        setPassword(e.currentTarget.value);
-    }, []);
+        setPasswordChecker({
+            password : e.currentTarget.value,
+            strength : PasswordChecker(e.currentTarget.value)
+        });
+    }, [passwordChecker]);
     
-    
-    useEffect( () => {
-        setStrength(PasswordChecker(password));
-    }, [password]);
     return (
         <>
             <div className="h-screen w-screen">
                 <div className="flex flex-col justify-center items-center mt-10 p-6">
+
                     <div className="">
                         <label htmlFor="password" 
                             className=" text-2xl font-medium">
@@ -64,8 +68,9 @@ export const PasswordComponent = () => {
                     </div>
 
                     <div className="mt-2">
-                        <ProgressBarComponent value={strength}/>
+                        <ProgressBarComponent value={passwordChecker.strength}/>
                     </div>
+                    
                 </div>
             </div>
         </>
