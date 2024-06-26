@@ -1,10 +1,11 @@
-import './App.css'
+
+import { PasswordComponent } from './components/Password'
 
 function App() {
 
   return (
     <>
-      
+      <PasswordComponent />
     </>
   )
 }
