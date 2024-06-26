@@ -8,18 +8,18 @@ const Notification = ({notifications , loading} : {notifications : NotificationD
 
     return (
         <>
-        <div className="mt-10">
-            <h1>Notification</h1>
-            {
-                loading ? <Loading /> : 
-                    <ul>
-                        <li>jobs : { data?.jobs}</li>
-                        <li> messaging : { data?.messaging}</li>
-                        <li>network : { data?.network}</li>
-                        <li>notifications : { data?.notifications}</li>
-                    </ul>
-            } 
-        </div>  
+            <div className="mt-10">
+                <h1>Notification</h1>
+                {
+                    loading ? <Loading /> : 
+                        <ul>
+                            <li>jobs : { data?.jobs}</li>
+                            <li> messaging : { data?.messaging}</li>
+                            <li>network : { data?.network}</li>
+                            <li>notifications : { data?.notifications}</li>
+                        </ul>
+                } 
+            </div>
         </>
     )
 }
