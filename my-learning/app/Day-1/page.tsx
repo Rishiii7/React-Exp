@@ -54,8 +54,6 @@ const page = () => {
         time: 10
     });
 
-
-
   return (
     <>
     <div className='w-full flex flex-col justify-center items-center mt-20 gap-5'>
@@ -79,6 +77,6 @@ const page = () => {
     </div>
     </>
   )
-}
+};
 
 export default page
