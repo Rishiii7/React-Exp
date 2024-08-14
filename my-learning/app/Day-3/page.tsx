@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion/accordion';
 
 type AccordionProps = {
     id: string;
@@ -29,8 +30,7 @@ const list: AccordionProps[] = [
     },
 ];
 
-const Day3 = () => {
-
+const AccordionFunction = () => {
     const [accordion, setAccordion] = useState<boolean[]>(Array(list.length).fill(false));
 
     const handleAccordion = (index: number) => {
@@ -62,6 +62,25 @@ const Day3 = () => {
                 ))
             }
         </div>
+        </>
+    )
+}
+
+const Day3 = () => {
+
+    return (
+        // <AccordionFunction />
+        <>
+            <Accordion>
+                {
+                    list.map( (item) => (
+                        <AccordionItem id={item.id}>
+                            <AccordionTrigger> { item.title }</AccordionTrigger>
+                            <AccordionContent>{item.description}</AccordionContent>
+                        </AccordionItem>
+                    ))
+                }
+            </Accordion>
         </>
     )
 }
