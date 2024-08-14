@@ -31,13 +31,13 @@ const list: AccordionProps[] = [
 ];
 
 const AccordionFunction = () => {
-    const [accordion, setAccordion] = useState<boolean[]>(Array(list.length).fill(false));
+    const [accordion, setAccordion] = useState<string | null>(null);
 
-    const handleAccordion = (index: number) => {
+    const handleAccordion = (index: string) => {
         console.log("inside onclick")
-        setAccordion(accordion.map( (item, ind) => {
-             return ind === index ? !item : false
-        }))
+        let activeId: string| null = index
+        if ( index === accordion ) activeId = null
+        setAccordion(activeId)
     }
 
     console.log(accordion);
@@ -50,12 +50,12 @@ const AccordionFunction = () => {
                 list.map( (item, index) => (
                     <>
                         <div key={index} 
-                            onClick={() => handleAccordion(index)}
+                            onClick={() => handleAccordion(item.id)}
                             className='cursor-pointer p-3'
                             >
                             { item.title }
-                            <div className={`${accordion[index] ? 'flex' : 'hidden'} `} >
-                                { item.description }
+                            <div className={`${accordion ? 'flex' : 'hidden'} `} >
+                                { accordion === item.id ? item.description : "" }
                             </div>
                         </div>
                     </>
@@ -69,19 +69,19 @@ const AccordionFunction = () => {
 const Day3 = () => {
 
     return (
-        // <AccordionFunction />
-        <>
-            <Accordion>
-                {
-                    list.map( (item) => (
-                        <AccordionItem id={item.id}>
-                            <AccordionTrigger> { item.title }</AccordionTrigger>
-                            <AccordionContent>{item.description}</AccordionContent>
-                        </AccordionItem>
-                    ))
-                }
-            </Accordion>
-        </>
+        <AccordionFunction />
+        // <>
+        //     <Accordion>
+        //         {
+        //             list.map( (item) => (
+        //                 <AccordionItem id={item.id}>
+        //                     <AccordionTrigger> { item.title }</AccordionTrigger>
+        //                     <AccordionContent>{item.description}</AccordionContent>
+        //                 </AccordionItem>
+        //             ))
+        //         }
+        //     </Accordion>
+        // </>
     )
 }
 
