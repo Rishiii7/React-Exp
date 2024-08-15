@@ -69,19 +69,19 @@ const AccordionFunction = () => {
 const Day3 = () => {
 
     return (
-        <AccordionFunction />
-        // <>
-        //     <Accordion>
-        //         {
-        //             list.map( (item) => (
-        //                 <AccordionItem id={item.id}>
-        //                     <AccordionTrigger> { item.title }</AccordionTrigger>
-        //                     <AccordionContent>{item.description}</AccordionContent>
-        //                 </AccordionItem>
-        //             ))
-        //         }
-        //     </Accordion>
-        // </>
+        // <AccordionFunction />
+        <>
+            <Accordion>
+                {
+                    list.map( (item) => (
+                        <AccordionItem id={item.id}>
+                            <AccordionTrigger> { item.title }</AccordionTrigger>
+                            <AccordionContent>{item.description}</AccordionContent>
+                        </AccordionItem>
+                    ))
+                }
+            </Accordion>
+        </>
     )
 }
 
