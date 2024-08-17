@@ -1,5 +1,6 @@
 "use client";
 
+// Hi there
 import React, { useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion/accordion';
 
