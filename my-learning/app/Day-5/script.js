@@ -1,20 +1,27 @@
 debugger
 
+function makeArmy() {
+  let shooters = [];
 
-
-function createCounter() {
-    let count = 0; // count is in the outer function's scope
-  
-    return function() { // this is the inner function
-      count++; // inner function accesses the outer function's variable
-      console.log(count);
+  let i = 0;
+  while (i < 10) {
+    let j = i;
+    let shooter = function() { 
+      alert( j ); 
     };
-}
+    shooters.push(shooter); 
+    i++;
+  }
+
   
-let counter = createCounter(); // createCounter returns the inner function
-counter(); // 1
-counter(); // 2
-counter(); // 3
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0]();  // what is output?
+army[1](); // 
+army[2](); //
 
 
 // let globalVar = "I am from global/script scope"
