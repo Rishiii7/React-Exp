@@ -75,7 +75,7 @@ const LShapedGun = ({
             className='flex flex-col'
             onClick={onClick}
             >
-            ||----- 
+            || ----- 
         </Button>
         {
             bullet && (
