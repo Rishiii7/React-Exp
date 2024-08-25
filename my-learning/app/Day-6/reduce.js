@@ -199,3 +199,14 @@ const getWatchers = async (githubUsername) => {
 (async () => {
   console.log(await getWatchers('Rishiii7'));
 })();
+
+// Example 9
+function add() {
+  // console.log(...arguments);
+  return [...arguments].reduce( (acc, ele) => {
+    // console.log(ele);
+    return acc + ele;
+  }, 0);
+};
+
+console.log(add(1,2,4,6,7,8));
