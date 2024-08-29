@@ -1,4 +1,4 @@
-debugger
+debugger;
 
 function makeArmy() {
   let shooters = [];
@@ -6,23 +6,21 @@ function makeArmy() {
   let i = 0;
   while (i < 10) {
     let j = i;
-    let shooter = function() { 
-      alert( j ); 
+    let shooter = function () {
+      alert(j);
     };
-    shooters.push(shooter); 
+    shooters.push(shooter);
     i++;
   }
 
-  
   return shooters;
 }
 
 let army = makeArmy();
 
-army[0]();  // what is output?
-army[1](); // 
+army[0](); // what is output?
+army[1](); //
 army[2](); //
-
 
 // let globalVar = "I am from global/script scope"
 
